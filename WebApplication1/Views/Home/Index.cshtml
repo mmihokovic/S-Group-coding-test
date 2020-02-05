@@ -1,0 +1,130 @@
+﻿<div class="jumbotron">
+    <h1>S-GROUP Solutions</h1>
+    <p class="lead">Coding test - Marko Mihoković</p>
+</div>
+
+<div ng-app="myApp">  
+  <div class="container">   
+    <div ng-controller="homeController">  
+      <h3>Arc Gis specification</h3>
+      <dl class="dl-horizontal">
+        <dt>Service Description:</dt>
+        <dd>{{serviceSpec.ServiceDescription}}</dd>
+        <dt>Map Name:</dt>
+        <dd>{{serviceSpec.MapName}}</dd>
+        <dt>Capabilities:</dt>
+        <dd>{{serviceSpec.Capabilities}}</dd>
+        <dt>Current version:</dt>
+        <dd>{{serviceSpec.CurrentVersion}}</dd>
+        <dt>Description:</dt>
+        <dd>{{serviceSpec.Description}}</dd>
+        <dt>Supported image format types:</dt>
+        <dd>{{serviceSpec.SupportedImageFormatTypes}}</dd>
+        <dt>Units:</dt>
+        <dd>{{serviceSpec.Units}}</dd>
+        <dt>Single fused map cache:</dt>
+        <dd>{{serviceSpec.SingleFusedMapCache}}</dd>
+      </dl>
+      
+      <hr/>
+      <h3>Layers</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>ParentLayerId</th>
+                <th>SubLayerIds</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>MaxScale</th>
+                <th>MinScale</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="l in data.layers">
+                <td>{{l.Id}}</td>
+                <td>{{l.Name}}</td>
+                <td>{{l.ParentLayerId}}</td>
+                <td>{{l.SubLayerIds}}</td>
+                <td>{{l.Type}}</td>
+                <td>{{l.Description}}</td>
+                <td>{{l.MaxScale}}</td>
+                <td>{{l.MinScale}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <hr/>
+      <h3>Quarable layers</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>ParentLayerId</th>
+                <th>SubLayerIds</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>MaxScale</th>
+                <th>MinScale</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="l in data.queriableLayers">
+                <td>{{l.Id}}</td>
+                <td>{{l.Name}}</td>
+                <td>{{l.ParentLayerId}}</td>
+                <td>{{l.SubLayerIds}}</td>
+                <td>{{l.Type}}</td>
+                <td>{{l.Description}}</td>
+                <td>{{l.MaxScale}}</td>
+                <td>{{l.MinScale}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <h3>Extent (bounding box)</h3>
+      <div class="form-inline">
+        <label class="col-md-2 control-label">xMin:</label>
+        <div class="col-md-10">
+          <input type="number" name="xMin" ng-model="xMin" step="0.000000000001">
+        </div>
+      </div>
+      <div class="form-inline">
+        <label class="col-md-2 control-label">yMin:</label>
+        <div class="col-md-10">
+          <input type="number" name="yMin" ng-model="yMin" step="0.000000000001">
+        </div>
+      </div>
+      <div class="form-inline">
+        <label class="col-md-2 control-label">xMax:</label>
+        <div class="col-md-10">
+          <input type="number" name="xMax" ng-model="xMax" step="0.000000000001">
+        </div>
+      </div>
+      <div class="form-inline">
+        <label class="col-md-2 control-label">yMax:</label>
+        <div class="col-md-10">
+          <input type="number" name="yMax" ng-model="yMax" step="0.000000000001">
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary pull-right" ng-click="getImage()">Get image</button>
+      </div>
+      <img ng-src="{{imageUrl}}" alt="">
+    </div>
+  </div>  
+</div>   
